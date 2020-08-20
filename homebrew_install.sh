@@ -10,11 +10,10 @@ echo "run brew update..."
 which brew >/dev/null 2>&1 && brew update
 
 echo "ok. run brew upgrade..."
+brew upgrade
 
-brew upgrade --all
+# **************************************************
+# HOMEBREW INSTALLED! bye.
+# **************************************************
 
-**************************************************
-HOMEBREW INSTALLED! bye.
-**************************************************
-
-END
+# END
