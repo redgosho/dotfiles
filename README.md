@@ -8,12 +8,12 @@ Homebrewはパッケージ管理ツール。
 1. Xcodeをインストール  
 App storeからXcodeをインストール
 2. コマンドライン・デベロッパーツールをインストール  
-下記コマンドを実行
+3. 下記コマンドを実行
 ```
 $ xcode-select --install
 ```
 ポップアップが出てくるので"インストール"を選択し利用規約に同意
-3. インストールが完了したら下記コマンドを実行
+4. インストールが完了したら下記コマンドを実行  
 ```
 $ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/homebrew_install.sh | bash
 ```
@@ -21,7 +21,7 @@ homebrewがインストールされる。
 Homebrewの導入は以上。
 
 ### 2:初期設定
-1. dotfilesのダウンロード
+1. dotfilesのダウンロード  
 下記を実行。ホームディレクトリに各種設定ファイルが配置され反映される。
 
 初期では`make core`により
@@ -33,7 +33,7 @@ Homebrewの導入は以上。
 $ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/install.sh | bash
 ```
 
-2. パッケージインストール
+2. パッケージインストール  
 インストールパッケージは下記に記載
 ```
 /config/homebrew/*
@@ -44,18 +44,24 @@ $ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/install.sh 
 $ bash bin/brew-init.sh
 ```
 
+3. 追加設定  
+Fishなどの追加設定をしたい場合は`.dotfiles`のルートディレクトリで`make fish`などをすることで設定可能。→後述
 
-## ツールの設定
-### Easy Install
-```
-$ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/install.sh | bash
-```
+## installモジュール概要
+### Homebrew
+* pythonバージョン管理
+`pyenv` + `pipenv`の組み合わせ
+
+* nodeバージョン管理
+`nodenv`
+
+## コマンド一覧
 ### Core
 ```
 $ make core # install
 $ make core-clean # uninstall
 ```
-シンボリックリンク貼るだけ
+下記ツールdotfileのシンボリックリンク貼るだけ
 * bash
 * colorrc
 * editorconfig
