@@ -84,9 +84,6 @@ $ make textlint-clean # uninstall
 ```
 * npm
 
-## Tmux
-Tmux実行前に`brew install reattach-to-user-namespace`をやる。
-
 # 参考
 たけちゃんのdotfilesを参考にしました。
 https://github.com/takeokunn/dotfiles 
