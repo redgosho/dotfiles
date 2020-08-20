@@ -2,6 +2,21 @@
 # 環境変数の設定(https://qiita.com/magicant/items/d3bb7ea1192e63fba850)
 # 環境変数を設定する (export する変数)
 #--------------------------------------------------
+# rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
+# rubyバージョン管理
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
+# pyenv pythonのバージョン管理
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+#nodenv nodeバージョン管理
+eval "$(nodenv init -)"
+
 if [ "`uname`" == "Darwin" ]; then
   #--------------------------------------------------
   # MacOS
@@ -9,10 +24,6 @@ if [ "`uname`" == "Darwin" ]; then
   export PATH=/usr/local/bin:$PATH
   # MacのHigh Sierraから、デフォルトのOpenSSLがOpenSSLからLibreSSLになっているからOpenSSLにする
   export PATH="/usr/local/opt/openssl/bin:$PATH"
-  # rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
-  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
   # ANDROID
   export ANDROID_HOME=$HOME/Library/Android/sdk
   export PATH=$PATH:$ANDROID_HOME/emulator
@@ -29,15 +40,15 @@ elif [ "`uname`" == "Linux" ]; then
   #--------------------------------------------------
   # Linux
   #--------------------------------------------------
-  # rbenv(https://qiita.com/go_d_eye_0505/items/44d12ef0d52b2dc9d560)
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  # # rbenv(https://qiita.com/go_d_eye_0505/items/44d12ef0d52b2dc9d560)
+  # export PATH="$HOME/.rbenv/bin:$PATH"
+  # eval "$(rbenv init -)"
 
-  # python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
-  # pyenv pythonのバージョン管理
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
+  # # python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
+  # # pyenv pythonのバージョン管理
+  # export PYENV_ROOT="$HOME/.pyenv"
+  # export PATH="$PYENV_ROOT/bin:$PATH"
+  # eval "$(pyenv init -)"
 fi
 
 ## 最後にbashrcの読み込み

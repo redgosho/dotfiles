@@ -40,5 +40,6 @@ rlwrap
 direnv
 the_silver_searcher
 starship
+nodenv
 pyenv
 pipenv

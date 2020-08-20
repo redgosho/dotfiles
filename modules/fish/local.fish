@@ -8,6 +8,9 @@ set -x PYENV_ROOT $HOME/.pyenv
 set -x PATH $PATH $PYENV_ROOT/bin
 source (pyenv init - | psub)
 
+#for nodenv
+source (nodenv init - | psub)
+
 #android studio
 set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x PATH $ANDROID_HOME/emulator $PATH
