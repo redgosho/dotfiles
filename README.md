@@ -1,5 +1,3 @@
-# dotfiles
-参考(丸パクリ):https://github.com/takeokunn/dotfiles 
 ## ツールの導入
 ### Homebrewのインストール
 1. Xcodeをインストール  
@@ -58,3 +56,7 @@ $ make textlint-clean # uninstall
 
 ## Tmux
 Tmux実行前に`brew install reattach-to-user-namespace`をやる。
+
+# 参考
+たけちゃんのdotfilesを参考にしました。
+https://github.com/takeokunn/dotfiles 
