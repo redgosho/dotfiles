@@ -1,0 +1,5 @@
+tmux
+build-essential
+rlwrap
+nodejs
+silversearcher-ag

@@ -1,0 +1,15 @@
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+
+[alias]
+    st = status
+    br = branch
+    co = commit
+    ch = checkout
+    ad = add
+
+[ghq]
+	root = /Users/redgosho/workspace
+[credential]
+	helper = cache --timeout=86400
