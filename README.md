@@ -51,9 +51,17 @@ Fishなどの追加設定をしたい場合は`.dotfiles`のルートディレ�
 ### Homebrew
 * pythonバージョン管理
 `pyenv` + `pipenv`の組み合わせ
-
+使い方とか：https://qiita.com/fury00812/items/08036e78a449d1cbeb48
 * nodeバージョン管理
 `nodenv`
+使い方とか：https://qiita.com/1000ch/items/41ea7caffe8c42c5211c
+node-buildは`brew install nodenv`で入った。
+
+## その他
+### Font
+プログラミングフォント「白源(HackGen)」を導入
+参考：https://qiita.com/tawara_/items/374f3ca0a386fab8b305
+Homebrewのinitで導入されているのでターミナル設定でHackGenにすればよい。
 
 ## コマンド一覧
 ### Core
