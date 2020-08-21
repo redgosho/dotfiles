@@ -3,7 +3,7 @@ MacOS及びDebian系に対応。
 
 ## 使い方
 ### ゼロから構築編(MacOS)
-### 1:Homebrewのインストール
+#### 1:Homebrewのインストール
 Homebrewはパッケージ管理ツール。
 1. Xcodeをインストール  
 App storeからXcodeをインストール
@@ -20,7 +20,7 @@ $ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/homebrew_in
 homebrewがインストールされる。
 Homebrewの導入は以上。
 
-### 2:初期設定
+#### 2:初期設定
 1. dotfilesのダウンロード  
 下記を実行。ホームディレクトリに各種設定ファイルが配置され反映される。
 
@@ -46,6 +46,42 @@ $ bash bin/brew-init.sh
 
 3. 追加設定  
 Fishなどの追加設定をしたい場合は`.dotfiles`のルートディレクトリで`make fish`などをすることで設定可能。→後述
+
+### ゼロから構築編(Ubuntu)
+#### 1:dotfilesの入手
+下記コマンドを叩き、ローカルにdotfilesを設置する。
+```
+$ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/install.sh | bash
+```
+#### 2:aptパッケージをインストール
+多分makeが入っていなくてコケたりするので、最低限のaptパッケージをインストールする。  
+インストールパッケージは`/config/apt/*`に記載
+```
+$ bash bin/apt-init.sh
+```
+これで必要なaptパッケージはインストール完了。移行はhomebrewでパッケージをインストールしていく。
+インストールが終わったらおそらくコケているであろう
+```
+$ make core
+```
+してShellの再起動
+```
+$ exec $SHELL -l
+```
+#### 3:Homebrewの導入
+次にHomebrewをインストールしていく。下記のコードを実行する。
+```
+$ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/homebrew_install.sh | bash
+```
+
+次にHomebrewのパッケージをインストールしていく。インストールパッケージは`/config/homebrew/*`に記載
+```
+$ bash bin/brew-init.sh
+```
+最後にshellを再起動しておしまい(なはず)
+```
+$ exec $SHELL -l
+```
 
 ## installモジュール概要
 ### Homebrew

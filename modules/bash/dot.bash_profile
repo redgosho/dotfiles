@@ -40,6 +40,12 @@ elif [ "`uname`" == "Linux" ]; then
   #--------------------------------------------------
   # Linux
   #--------------------------------------------------
+  # homebrew
+  export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
+  PATH="$HOME/.linuxbrew/bin:$PATH"
+  export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+  export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   # # rbenv(https://qiita.com/go_d_eye_0505/items/44d12ef0d52b2dc9d560)
   # export PATH="$HOME/.rbenv/bin:$PATH"
   # eval "$(rbenv init -)"
