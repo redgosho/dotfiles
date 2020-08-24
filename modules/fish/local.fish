@@ -35,6 +35,12 @@ case Linux
   #--------------------------------------------------
   # Linux
   #--------------------------------------------------
+  # homebrew
+  set -x PATH /home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin $PATH
+  PATH $HOME/.linuxbrew/bin $PATH
+  set -x MANPATH (brew --prefix)/share/man $MANPATH
+  set -x INFOPATH (brew --prefix)/share/info $INFOPATH
+  source (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   umask 002
 case Darwin
   echo "import Mac(local.fish)"

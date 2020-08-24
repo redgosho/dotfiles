@@ -1,5 +1,6 @@
-tmux
-build-essential
-rlwrap
-nodejs
 silversearcher-ag
+build-essential
+curl
+file
+git
+make
