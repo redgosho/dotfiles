@@ -40,6 +40,8 @@ elif [ "`uname`" == "Linux" ]; then
   #--------------------------------------------------
   # Linux
   #--------------------------------------------------
+  # homebrew設定
+  umask 002
   # # rbenv(https://qiita.com/go_d_eye_0505/items/44d12ef0d52b2dc9d560)
   # export PATH="$HOME/.rbenv/bin:$PATH"
   # eval "$(rbenv init -)"
