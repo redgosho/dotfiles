@@ -15,6 +15,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 #nodenv nodeバージョン管理
+export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
 if [ "`uname`" == "Darwin" ]; then

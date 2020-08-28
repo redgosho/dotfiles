@@ -9,6 +9,7 @@ set -x PATH $PATH $PYENV_ROOT/bin
 source (pyenv init - | psub)
 
 #for nodenv
+set -x PATH $HOME/.nodenv/bin $PATH
 source (nodenv init - | psub)
 
 #android studio
