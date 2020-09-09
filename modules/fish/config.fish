@@ -1,25 +1,6 @@
 #--------------------------------------------------
 # 環境設定
 #--------------------------------------------------
-#--------------------------------------------------
-# 共通設定
-#--------------------------------------------------
-# load local.fish (環境変数、shell関数の読み込み)---------------------
-source ~/.config/fish/local.fish
-source ~/.config/fish/functions.fish
-
-# alias ------------------------------------------
-alias cdd='cd ~/Desktop'
-alias ll='ls -lF'
-alias d-c="docker-compose"
-alias d-="docker"
-
-#--------------------------------------------------
-# setting
-#--------------------------------------------------
-
-#fisherパッケージdecors/fish-ghqの設定
-set GHQ_SELECTOR peco
 
 #--------------------------------------------------
 # 環境依存設定
@@ -47,6 +28,26 @@ case FreeBSD NetBSD DragonFly
 case '*'
   echo "Hi, stranger!(config.fish)"
 end
+
+#--------------------------------------------------
+# 共通設定
+#--------------------------------------------------
+# load local.fish (環境変数、shell関数の読み込み)---------------------
+source ~/.config/fish/local.fish
+source ~/.config/fish/functions.fish
+
+# alias ------------------------------------------
+alias cdd='cd ~/Desktop'
+alias ll='ls -lF'
+alias d-c="docker-compose"
+alias d-="docker"
+
+#--------------------------------------------------
+# setting
+#--------------------------------------------------
+
+#fisherパッケージdecors/fish-ghqの設定
+set GHQ_SELECTOR peco
 
 #--------------------------------------------------
 # ゴミ箱

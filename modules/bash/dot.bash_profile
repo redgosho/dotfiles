@@ -2,22 +2,9 @@
 # 環境変数の設定(https://qiita.com/magicant/items/d3bb7ea1192e63fba850)
 # 環境変数を設定する (export する変数)
 #--------------------------------------------------
-# rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
-# rubyバージョン管理
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
-# pyenv pythonのバージョン管理
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-#nodenv nodeバージョン管理
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
-
+#--------------------------------------------------
+# 環境依存設定
+#--------------------------------------------------
 if [ "`uname`" == "Darwin" ]; then
   #--------------------------------------------------
   # MacOS
@@ -58,6 +45,25 @@ elif [ "`uname`" == "Linux" ]; then
   # export PATH="$PYENV_ROOT/bin:$PATH"
   # eval "$(pyenv init -)"
 fi
+
+#--------------------------------------------------
+# 共通設定
+#--------------------------------------------------
+# rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
+# rubyバージョン管理
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
+# pyenv pythonのバージョン管理
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+#nodenv nodeバージョン管理
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
 
 ## 最後にbashrcの読み込み
 test -r ~/.bashrc && . ~/.bashrc

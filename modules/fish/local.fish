@@ -1,33 +1,6 @@
 # write your settings!
 # 環境変数を設定
 #--------------------------------------------------
-# 共通設定
-#--------------------------------------------------
-# for pyenv
-set -x PYENV_ROOT $HOME/.pyenv
-set -x PATH $PATH $PYENV_ROOT/bin
-source (pyenv init - | psub)
-
-#for nodenv
-set -x PATH $HOME/.nodenv/bin $PATH
-source (nodenv init - | psub)
-
-#android studio
-set -x ANDROID_HOME $HOME/Library/Android/sdk
-set -x PATH $ANDROID_HOME/emulator $PATH
-set -x PATH $ANDROID_HOME/tools $PATH
-set -x PATH $ANDROID_HOME/tools/bin $PATH
-set -x PATH $ANDROID_HOME/platform-tools $PATH
-
-# gcp
-set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.fish.inc $PATH
-set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc $PATH
-
-# awsアクセスキー設定(awscliの設定後)
-set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
-set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
-
-#--------------------------------------------------
 # 環境依存設定
 #--------------------------------------------------
 switch (uname)
@@ -57,6 +30,37 @@ case FreeBSD NetBSD DragonFly
 case '*'
   echo "Hi, stranger!(local.fish)"
 end
+
+#--------------------------------------------------
+# 共通設定
+#--------------------------------------------------
+# for pyenv
+set -x PYENV_ROOT $HOME/.pyenv
+set -x PATH $PATH $PYENV_ROOT/bin
+source (pyenv init - | psub)
+
+#for nodenv
+set -x PATH $HOME/.nodenv/bin $PATH
+source (nodenv init - | psub)
+
+#android studio
+set -x ANDROID_HOME $HOME/Library/Android/sdk
+set -x PATH $ANDROID_HOME/emulator $PATH
+set -x PATH $ANDROID_HOME/tools $PATH
+set -x PATH $ANDROID_HOME/tools/bin $PATH
+set -x PATH $ANDROID_HOME/platform-tools $PATH
+
+# gcp
+set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.fish.inc $PATH
+set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc $PATH
+
+# awsアクセスキー設定(awscliの設定後)
+set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
+set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
+
+#--------------------------------------------------
+# その他
+#--------------------------------------------------
 
 # for composer
 # set PATH $PATH $HOME/.composer/vendor/bin
