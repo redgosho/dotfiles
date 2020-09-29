@@ -10,6 +10,8 @@ if [ "`uname`" == "Darwin" ]; then
   # MacOS
   #--------------------------------------------------
   export PATH=/usr/local/bin:$PATH
+  # npm global path
+  export PATH=$PATH:`npm bin -g`
   # MacのHigh Sierraから、デフォルトのOpenSSLがOpenSSLからLibreSSLになっているからOpenSSLにする
   export PATH="/usr/local/opt/openssl/bin:$PATH"
   # ANDROID

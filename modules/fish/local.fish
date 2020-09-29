@@ -42,6 +42,8 @@ source (pyenv init - | psub)
 #for nodenv
 set -x PATH $HOME/.nodenv/bin $PATH
 source (nodenv init - | psub)
+#for npm
+set -x PATH $PATH:`npm bin -g`
 
 #android studio
 set -x ANDROID_HOME $HOME/Library/Android/sdk
