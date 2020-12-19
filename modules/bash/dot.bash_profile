@@ -53,10 +53,10 @@ fi
 #--------------------------------------------------
 # rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
 # rubyバージョン管理
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
+if which rbenv > /dev/null; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 # python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
 # pyenv pythonのバージョン管理
 export PYENV_ROOT="$HOME/.pyenv"
@@ -66,6 +66,13 @@ eval "$(pyenv init -)"
 #nodenv nodeバージョン管理
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+
+# for jenv
+if which jenv > /dev/null; then
+  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
 
 ## 最後にbashrcの読み込み
 test -r ~/.bashrc && . ~/.bashrc

@@ -45,6 +45,13 @@ source (nodenv init - | psub)
 #for npm
 set -x PATH $PATH:`npm bin -g`
 
+# for jenv
+if which jenv > /dev/null
+  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
+  set PATH $HOME/.jenv/bin $PATH
+  status --is-interactive; and source (jenv init -|psub)
+end
+
 #android studio
 set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x PATH $ANDROID_HOME/emulator $PATH
