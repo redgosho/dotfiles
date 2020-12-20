@@ -35,15 +35,19 @@ end
 # 共通設定
 #--------------------------------------------------
 # for pyenv
-set -x PYENV_ROOT $HOME/.pyenv
-set -x PATH $PATH $PYENV_ROOT/bin
-source (pyenv init - | psub)
+if which pyenv > /dev/null
+  set -x PYENV_ROOT $HOME/.pyenv
+  set -x PATH $PATH $PYENV_ROOT/bin
+  source (pyenv init - | psub)
+end
 
 #for nodenv
-set -x PATH $HOME/.nodenv/bin $PATH
-source (nodenv init - | psub)
-#for npm
-set -x PATH $PATH:`npm bin -g`
+if which nodenv > /dev/null
+  set -x PATH $HOME/.nodenv/bin $PATH
+  source (nodenv init - | psub)
+  #for npm
+  set -x PATH $PATH:`npm bin -g`
+end
 
 # for jenv
 if which jenv > /dev/null

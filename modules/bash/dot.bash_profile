@@ -59,13 +59,17 @@ if which rbenv > /dev/null; then
 fi
 # python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
 # pyenv pythonのバージョン管理
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if which pyenv > /dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
 #nodenv nodeバージョン管理
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+if which nodenv > /dev/null; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
+fi
 
 # for jenv
 if which jenv > /dev/null; then
