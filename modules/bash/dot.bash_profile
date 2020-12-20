@@ -23,9 +23,6 @@ if [ "`uname`" == "Darwin" ]; then
   # GCP-Command
   export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.fish.inc
   export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
-  # AWS(awscliの設定後)
-  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
-  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 elif [ "`uname`" == "Linux" ]; then
   #--------------------------------------------------
   # Linux
@@ -76,6 +73,13 @@ if which jenv > /dev/null; then
   # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
   export PATH="$HOME/.jenv/bin:$PATH"
   eval "$(jenv init -)"
+fi
+
+
+# AWS(awscliの設定後)
+if which aws > /dev/null; then
+  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 fi
 
 ## 最後にbashrcの読み込み

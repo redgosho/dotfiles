@@ -68,8 +68,10 @@ set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/complet
 set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc $PATH
 
 # awsアクセスキー設定(awscliの設定後)
-set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
-set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
+if which aws > /dev/null
+  set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
+  set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
+end
 
 #--------------------------------------------------
 # その他
