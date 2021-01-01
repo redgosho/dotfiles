@@ -71,6 +71,7 @@ fi
 # for jenv
 if which jenv > /dev/null; then
   # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
+  jenv enable-plugin export # JAVA_HOMEの自動設定
   export PATH="$HOME/.jenv/bin:$PATH"
   eval "$(jenv init -)"
 fi
