@@ -38,15 +38,27 @@ end
 set -x PATH $HOME/.npm_global/bin $PATH
 
 # for pyenv
-set -x PYENV_ROOT $HOME/.pyenv
-set -x PATH $PATH $PYENV_ROOT/bin
-source (pyenv init - | psub)
+if which pyenv > /dev/null
+  set -x PYENV_ROOT $HOME/.pyenv
+  set -x PATH $PATH $PYENV_ROOT/bin
+  source (pyenv init - | psub)
+end
 
 #for nodenv
-set -x PATH $HOME/.nodenv/bin $PATH
-source (nodenv init - | psub)
-#for npm
-set -x PATH $PATH:`npm bin -g`
+if which nodenv > /dev/null
+  set -x PATH $HOME/.nodenv/bin $PATH
+  source (nodenv init - | psub)
+  #for npm
+  set -x PATH $PATH:`npm bin -g`
+end
+
+# for jenv
+if which jenv > /dev/null
+  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
+  jenv enable-plugin export # JAVA_HOMEの自動設定
+  set PATH $HOME/.jenv/bin $PATH
+  status --is-interactive; and source (jenv init -|psub)
+end
 
 #android studio
 set -x ANDROID_HOME $HOME/Library/Android/sdk
@@ -60,8 +72,10 @@ set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/complet
 set -x PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc $PATH
 
 # awsアクセスキー設定(awscliの設定後)
-set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
-set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
+if which aws > /dev/null
+  set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
+  set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
+end
 
 #--------------------------------------------------
 # その他
