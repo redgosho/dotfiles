@@ -51,6 +51,9 @@ fi
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
+# global npmのPATH
+export PATH=~/.npm_global/bin:$PATH
+
 # rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
 # rubyバージョン管理
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

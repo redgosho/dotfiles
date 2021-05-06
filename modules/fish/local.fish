@@ -34,6 +34,9 @@ end
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
+# for global npm
+set -x PATH $HOME/.npm_global/bin $PATH
+
 # for pyenv
 set -x PYENV_ROOT $HOME/.pyenv
 set -x PATH $PATH $PYENV_ROOT/bin
