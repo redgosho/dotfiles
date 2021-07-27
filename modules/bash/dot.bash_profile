@@ -49,7 +49,7 @@ fi
 # 共通設定
 #--------------------------------------------------
 # global npmのPATH
-export PATH=~/.npm_global/bin:$PATH
+export PATH="$HOME/.npm_global/bin:$PATH"
 
 # rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
 # rubyバージョン管理
@@ -88,3 +88,10 @@ fi
 
 ## 最後にbashrcの読み込み
 test -r ~/.bashrc && . ~/.bashrc
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/redgosho/google-cloud-sdk/path.bash.inc' ]; then . '/Users/redgosho/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/redgosho/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/redgosho/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/usr/local/sbin:$PATH"

@@ -34,9 +34,9 @@ end
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
+echo "dot-bot001「I'm going to set up a common PATH now!」(local.fish)"
 # for global npm
 set -x PATH $HOME/.npm_global/bin $PATH
-
 # for pyenv
 if which pyenv > /dev/null
   set -x PYENV_ROOT $HOME/.pyenv
@@ -47,7 +47,8 @@ end
 #for nodenv
 if which nodenv > /dev/null
   set -x PATH $HOME/.nodenv/bin $PATH
-  source (nodenv init - | psub)
+  # source (nodenv init - | psub)
+  eval (nodenv init - | source)
   #for npm
   set -x PATH $PATH:`npm bin -g`
 end
