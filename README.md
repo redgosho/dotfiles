@@ -25,15 +25,18 @@ Homebrewの導入は以上。
 下記を実行。ホームディレクトリに各種設定ファイルが配置され反映される。
 
 初期では`make core`により
-* bash
 * vim
 * tmux
+* colorrc
+* editorconfig
+* git
+* textlint
 が設定される。
 ```
 $ curl -L https://raw.githubusercontent.com/redgosho/dotfiles/master/install.sh | bash
 ```
 
-2. パッケージインストール  
+1. パッケージインストール  
 インストールパッケージは下記に記載
 ```
 /config/homebrew/*
@@ -106,13 +109,26 @@ $ make core # install
 $ make core-clean # uninstall
 ```
 下記ツールdotfileのシンボリックリンク貼るだけ
-* bash
 * colorrc
 * editorconfig
 * git
 * textlintrc
 * tmux
 * vim
+
+### bash
+bash shellのdotfileを設定。
+```
+$ make bash # install
+$ make bash-clean # uninstall
+```
+
+### zsh
+zsh shellのdotfileを設定。
+```
+$ make zsh # install
+$ make zsh-clean # uninstall
+```
 
 ### Fish
 fish shellのdotfileを設定。
