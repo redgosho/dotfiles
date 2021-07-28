@@ -15,5 +15,5 @@ fisher-install: $(FISHER_DIR)
 $(FISHER_DIR):$(FISH_DIR)
 	curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 	mkdir -p $(FISHER_DIR)
-	ln -sf $(FISHER_MODULE_DIR)/fishfile $(FISH_DIR)/fishfile
-	@echo -e '\e[31mPlz type in \e[m\e[33;41;1m“fisher”\e[m'
+	ln -sf $(FISHER_MODULE_DIR)/fish_plugins $(FISH_DIR)/fish_plugins
+	@printf '\nSwitch to fish shell and type\033[35m ”fisher update”\033[m.\n'

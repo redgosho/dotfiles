@@ -8,9 +8,7 @@ textlint-npm-clean:
 	rm -fr $(TEXTLINT_INSTALL_DIRCTORY)
 
 .PHONY: textlint-npm-install
-textlint-npm-install: $(TEXTLINT_INSTALL_DIRCTORY)
-
-$(TEXTLINT_INSTALL_DIRCTORY):
+textlint-npm-install:
 	mkdir -p $(TEXTLINT_INSTALL_DIRCTORY)
 	npm config set prefix $(TEXTLINT_INSTALL_DIRCTORY)
 	npm install -g textlint

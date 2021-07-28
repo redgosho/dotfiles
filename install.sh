@@ -26,6 +26,8 @@ function dotfiles-install()
 function dotfiles-init()
 {
     cd $DOTFILES_ROOT
+    make bash
+    make zsh
     make core
 }
 

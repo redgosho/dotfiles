@@ -5,7 +5,7 @@ if [ "`uname`" = "Darwin" ]; then
   #--------------------------------------------------
   # MacOS
   #--------------------------------------------------
-  echo '???「Hello, I’m Macintosh.」'
+  echo 'zsh「Hello, I’m Macintosh.」'
   export LANG=ja_JP.UTF-8
   # design -------------
   # ディレクトリカラー設定(https://qiita.com/PinkPhayate/items/a670e7e7935baea988f2)
@@ -13,8 +13,10 @@ if [ "`uname`" = "Darwin" ]; then
   export LSCOLORS=hxfxcxdxbxegedabagacad
   export LANG=ja_JP.UTF-8
   alias ls='ls -G'
+  # shell restart
+  alias resh='exec $SHELL -l'
 elif [ "`uname`" = "Linux" ]; then
-echo '???「Hello, I’m Linux.」'
+echo 'zsh「Hello, I’m Linux.」'
   #--------------------------------------------------
   # Linux
   #--------------------------------------------------
@@ -29,7 +31,6 @@ fi
 #--------------------------------------------------
 # alias --------------
 alias ll="ls -lF"
-
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=30000
@@ -54,10 +55,20 @@ setopt list_packed
 # 補完候補一覧をカラー表示
 zstyle ':completion:*' list-colors ''
 
+# サジェスト系
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#--------------------------------------------------
+# デザイン設定
+#--------------------------------------------------
 # User名、Dirを色付きで表示させるメソッド
+# 色一覧↓↓
+# for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
 function left-prompt {
-  name_t='007m%}'      # user name text clolr
-  name_b='196m%}'    # user name background color
+  name_t='235m%}'      # user name text clolr
+  name_b='118m%}'    # user name background color
+  name_t_err='007m%}'      # user name text clolr
+  name_b_err='196m%}'    # user name background color
   path_t='235m%}'     # path text clolr
   path_b='007m%}'   # path background color
   arrow='200m%}'   # arrow color
@@ -66,9 +77,10 @@ function left-prompt {
   reset='%{\e[0m%}'   # reset
   sharp='\uE0B0'      # triangle
   
-  user="${back_color}${name_b}${text_color}${name_t}"
+  user="%(?.%{${back_color}${name_b}${text_color}${name_t}%}.%{${back_color}${name_b_err}${text_color}${name_t_err}%})"
+  user_arrow="%(?.%{${back_color}${path_b}${text_color}${name_b}${sharp}%}.%{${back_color}${path_b}${text_color}${name_b_err}${sharp}%})"
   dir="${back_color}${path_b}${text_color}${path_t}"
-  echo "${user}%n%#@%m${back_color}${path_b}${text_color}${name_b}${sharp} ${dir}%~${reset}${text_color}${path_b}${sharp} ${reset}\n${text_color}${arrow}→ ${reset}"
+  echo "${user}%n%#@%m${user_arrow} ${dir}%~${reset}${text_color}${path_b}${sharp} ${reset}\n${text_color}${arrow}→ ${reset}"
 }
 # プロンプトの左側にメソッドの結果を表示させる
 PROMPT=`left-prompt` 
@@ -87,7 +99,6 @@ function precmd() {
 # git ブランチ名を色付きで表示させるメソッド
 function rprompt-git-current-branch {
   local branch_name st branch_status
-  
   branch='\ue0a0'
   color='%{\e[38;5;' #  文字色を設定
   green='114m%}'
@@ -131,3 +142,23 @@ setopt prompt_subst
  
 # プロンプトの右側にメソッドの結果を表示させる
 RPROMPT='`rprompt-git-current-branch`'
+
+#--------------------------------------------------
+# 環境設定
+#--------------------------------------------------
+# anyenv設定
+if [ -e "$HOME/.anyenv" ]
+then
+    export ANYENV_ROOT="$HOME/.anyenv"
+    export PATH="$ANYENV_ROOT/bin:$PATH"
+    if command -v anyenv 1>/dev/null 2>&1
+    then
+        eval "$(anyenv init - zsh)"
+    fi
+fi
+
+# AWS(awscliの設定後)
+if which aws > /dev/null; then
+  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+fi

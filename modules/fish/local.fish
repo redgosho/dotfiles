@@ -34,31 +34,12 @@ end
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
-echo "dot-bot001「I'm going to set up a common PATH now!」(local.fish)"
-# for global npm
-set -x PATH $HOME/.npm_global/bin $PATH
-# for pyenv
-if which pyenv > /dev/null
-  set -x PYENV_ROOT $HOME/.pyenv
-  set -x PATH $PATH $PYENV_ROOT/bin
-  source (pyenv init - | psub)
-end
-
-#for nodenv
-if which nodenv > /dev/null
-  set -x PATH $HOME/.nodenv/bin $PATH
-  # source (nodenv init - | psub)
-  eval (nodenv init - | source)
-  #for npm
-  set -x PATH $PATH:`npm bin -g`
-end
-
-# for jenv
-if which jenv > /dev/null
-  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
-  jenv enable-plugin export # JAVA_HOMEの自動設定
-  set PATH $HOME/.jenv/bin $PATH
-  status --is-interactive; and source (jenv init -|psub)
+# anyenv
+if which anyenv > /dev/null
+  set -x ANYENV_ROOT $HOME/.anyenv
+  set -x PATH $PATH $ANYENV_ROOT/bin
+  # eval (anyenv init - | source)
+  source (anyenv init - fish | psub)
 end
 
 #android studio
@@ -77,69 +58,3 @@ if which aws > /dev/null
   set AWS_ACCESS_KEY_ID (aws configure get aws_access_key_id)
   set AWS_SECRET_ACCESS_KEY (aws configure get aws_secret_access_key)
 end
-
-#--------------------------------------------------
-# その他
-#--------------------------------------------------
-
-# for composer
-# set PATH $PATH $HOME/.composer/vendor/bin
-
-# for gem
-# set -x GEM_HOME $HOME/.gem
-# set -x PATH $PATH $GEM_HOME/bin
-
-# for golang
-# set -x GOPATH $HOME/projects/go
-# set -x PATH $PATH $GOPATH/bin
-
-# for gcloud
-# set -x PATH $PATH $HOME/google-cloud-sdk/bin
-
-# colorrc
-# set -x PATH $PATH (brew --prefix coreutils)/libexec/gnubin
-# bass (dircolors ~/.colorrc)
-
-#nodenvの設定
-# set -x PATH $HOME/.nodenv/bin $PATH
-# eval (nodenv init - | source)
-
-# npm
-# set -x PATH $HOME/.npm-global/bin $PATH
-
-# cask
-# set -x PATH $HOME/.cask/bin $PATH
-
-# for goenv
-# set -x GOENV_ROOT $HOME/.goenv
-# set -x PATH $PATH $GOENV_ROOT/bin
-# source (goenv init - | psub)
-# set -x PATH $PATH $GOENV_ROOT/bin
-# set -x PATH $PATH $GOPATH/bin
-
-# for rbenv
-# set -x PATH $PATH $HOME/.rbenv/bin
-# source (rbenv init - | psub)
-
-# nodebrew
-# set -x PATH $PATH $HOME/.nodebrew/current/bin
-
-# roswell
-# set -x PATH $PATH $HOME/.roswell/bin
-
-# cargo
-# set -x PATH $PATH $HOME/.cargo/bin
-
-# mac
-# set -x PATH $PATH /usr/local/sbin
-# set -xg LANG en_US.UTF-8
-# set -xg LC_ALL en_US.UTF-8
-
-# direnv
-# eval (direnv hook fish)
-
-# alias emacs 'emacs -nw'
-# alias gnucash 'env LANGUAGE=ja_JP.UTF-8 LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8 gnucash'
-# alias ss 'open /System/Library/CoreServices/ScreenSaverEngine.app'
-# alias ls 'gls --color'
-# alias sbcl 'rlwrap sbcl'

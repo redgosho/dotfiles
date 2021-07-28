@@ -34,51 +34,20 @@ elif [ "`uname`" == "Linux" ]; then
   export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   umask 002
-  # # rbenv(https://qiita.com/go_d_eye_0505/items/44d12ef0d52b2dc9d560)
-  # export PATH="$HOME/.rbenv/bin:$PATH"
-  # eval "$(rbenv init -)"
-
-  # # python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
-  # # pyenv pythonのバージョン管理
-  # export PYENV_ROOT="$HOME/.pyenv"
-  # export PATH="$PYENV_ROOT/bin:$PATH"
-  # eval "$(pyenv init -)"
 fi
 
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
-# global npmのPATH
-export PATH="$HOME/.npm_global/bin:$PATH"
-
-# rbenv(https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1)
-# rubyバージョン管理
-if which rbenv > /dev/null; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+if [ -e "$HOME/.anyenv" ]
+then
+    export ANYENV_ROOT="$HOME/.anyenv"
+    export PATH="$ANYENV_ROOT/bin:$PATH"
+    if command -v anyenv 1>/dev/null 2>&1
+    then
+        eval "$(anyenv init -)"
+    fi
 fi
-# python系(https://qiita.com/fury00812/items/08036e78a449d1cbeb48)
-# pyenv pythonのバージョン管理
-if which pyenv > /dev/null; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
-
-#nodenv nodeバージョン管理
-if which nodenv > /dev/null; then
-  export PATH="$HOME/.nodenv/bin:$PATH"
-  eval "$(nodenv init -)"
-fi
-
-# for jenv
-if which jenv > /dev/null; then
-  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
-  jenv enable-plugin export # JAVA_HOMEの自動設定
-  export PATH="$HOME/.jenv/bin:$PATH"
-  eval "$(jenv init -)"
-fi
-
 
 # AWS(awscliの設定後)
 if which aws > /dev/null; then

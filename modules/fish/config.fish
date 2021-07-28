@@ -7,6 +7,7 @@
 #--------------------------------------------------
 switch (uname)
 case Linux
+  echo 'fish「Hello, I’m Linux.」'
   echo "import Linux(config.fish)"
   #--------------------------------------------------
   # Linux
@@ -16,6 +17,7 @@ case Linux
   # eval 'dircolors ~/.colorrc'
   # alias ls='ls --color=auto'
 case Darwin
+  echo 'fish「Hello, I’m Macintosh.」'
   echo "import Mac(config.fish)"
   #--------------------------------------------------
   # MacOS
@@ -23,6 +25,8 @@ case Darwin
   # ディレクトリカラー設定(http://nemoplus.hateblo.jp/entry/20090119/1232373540)
   set -x LSCOLORS  hxfxcxdxbxegedabagacad
   alias ls='ls -G'
+  alias resh='exec $SHELL -l'
+  alias refish='exec fish -l'
 case FreeBSD NetBSD DragonFly
   echo "import FreeBSD NetBSD DragonFly(config.fish)"
 case '*'

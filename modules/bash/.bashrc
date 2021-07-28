@@ -9,6 +9,7 @@
 # 環境依存設定
 #--------------------------------------------------
 if [ "`uname`" == "Darwin" ]; then
+  echo 'bash「Hello, I’m Macintosh.」'
   #--------------------------------------------------
   # MacOS
   #--------------------------------------------------
@@ -17,6 +18,7 @@ if [ "`uname`" == "Darwin" ]; then
   export LSCOLORS=hxfxcxdxbxegedabagacad
   alias ls='ls -G'
 elif [ "`uname`" == "Linux" ]; then
+  echo 'bash「Hello, I’m Linux.」'
   #--------------------------------------------------
   # Linux
   #--------------------------------------------------
@@ -31,6 +33,8 @@ fi
 #--------------------------------------------------
 # alias --------------
 alias ll="ls -lF"
+alias resh="exec $SHELL -l"
+alias rebash="exec bash -l"
 
 # design -------------
 # $の前の設定

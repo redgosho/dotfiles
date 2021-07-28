@@ -14,6 +14,7 @@ CORE_TARGETS +=
 BASH_TARGETS +=
 ZSH_TARGET +=
 FISH_TARGETS +=
+ANYENV_TARGETS +=
 TEXTLINT_TARGETS +=
 
 # clean
@@ -21,6 +22,7 @@ CORE_CLEAN_TARGETS +=
 BASH_CLEAN_TARGETS +=
 ZSH_CLEAN_TARGET +=
 FISH_CLEAN_TARGETS +=
+ANYENV_CLEAN_TARGETS +=
 TEXTLINT_CLEAN_TARGETS +=
 
 ####################
@@ -47,6 +49,9 @@ zsh: $(ZSH_TARGETS)
 .PHONY: fish
 fish: $(FISH_TARGETS)
 
+.PHONY: anyenv
+anyenv: $(ANYENV_TARGETS)
+
 .PHONY: textlint
 textlint: $(TEXTLINT_TARGETS)
 
@@ -65,6 +70,9 @@ zsh-clean: $(ZSH_CLEAN_TARGETS)
 
 .PHONY: fish-clean
 fish-clean: $(FISH_CLEAN_TARGETS)
+
+.PHONY: anyenv-clean
+anyenv-clean: $(ANYENV_CLEAN_TARGETS)
 
 .PHONY: textlint-clean
 textlint-clean: $(TEXTLINT_CLEAN_TARGETS)
