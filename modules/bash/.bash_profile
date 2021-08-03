@@ -49,6 +49,12 @@ then
     fi
 fi
 
+# nodenv
+if type nodenv > /dev/null 2>&1
+then
+  export PATH=$PATH:`npm bin -g`
+fi
+
 # AWS(awscliの設定後)
 if which aws > /dev/null; then
   export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)

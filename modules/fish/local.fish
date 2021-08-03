@@ -42,6 +42,11 @@ if which anyenv > /dev/null
   source (anyenv init - fish | psub)
 end
 
+# nodenv
+if which nodenv > /dev/null
+  set -x PATH $PATH (npm bin -g)
+end
+
 #android studio
 set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x PATH $ANDROID_HOME/emulator $PATH
