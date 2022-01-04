@@ -151,6 +151,9 @@ RPROMPT='`rprompt-git-current-branch`'
 #--------------------------------------------------
 # 環境設定
 #--------------------------------------------------
+#asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+
 # anyenv設定
 if [ -e "$HOME/.anyenv" ]
 then
@@ -184,4 +187,3 @@ fi
 export DOCKER_HOST=unix:///Users/redgosho/.lima/docker/sock/docker.sock 
 
 alias 2fk='oathtool --totp --base32 "VJYUAWI3X" | tee >( pbcopy )'
-

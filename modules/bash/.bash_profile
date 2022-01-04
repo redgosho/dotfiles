@@ -39,6 +39,11 @@ fi
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
+## asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+## anyenv
 if [ -e "$HOME/.anyenv" ]
 then
     export ANYENV_ROOT="$HOME/.anyenv"

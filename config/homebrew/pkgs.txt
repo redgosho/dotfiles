@@ -3,10 +3,9 @@ openssl
 ricty
 gcc
 git
-anyenv
-pipenv
 tmux
 bash
 zsh
 fish
 peco
+asdf
