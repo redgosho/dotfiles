@@ -15,6 +15,11 @@ if [ "`uname`" = "Darwin" ]; then
   alias ls='ls -G'
   # shell restart
   alias resh='exec $SHELL -l'
+
+  # Homebrew settings
+  export PATH="/usr/local/sbin:$PATH"
+  alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+  
 elif [ "`uname`" = "Linux" ]; then
 echo 'zsh「Hello, I’m Linux.」'
   #--------------------------------------------------
@@ -163,8 +168,20 @@ then
   export PATH=$PATH:`npm bin -g`
 fi
 
+# flutter
+export PATH="$PATH:$HOME/development/flutter/bin"
+
+# adb
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+
 # AWS(awscliの設定後)
 if which aws > /dev/null; then
   export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
   export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 fi
+
+# Lima設定
+export DOCKER_HOST=unix:///Users/redgosho/.lima/docker/sock/docker.sock 
+
+alias 2fk='oathtool --totp --base32 "VJYUAWI3X" | tee >( pbcopy )'
+
