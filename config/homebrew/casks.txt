@@ -1,2 +1,3 @@
 font-hackgen
 font-hackgen-nerd
+visual-studio-code

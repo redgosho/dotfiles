@@ -10,7 +10,7 @@ while read pkg; do
 done < $CONFIG_HOMEBREW_DIR/pkgs.txt
 
 while read cask; do
-    brew cask install $cask
+    brew install $cask --cask
 done < $CONFIG_HOMEBREW_DIR/casks.txt
 
 brew link openssl --force
