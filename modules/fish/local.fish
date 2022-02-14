@@ -34,18 +34,21 @@ end
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
-# anyenv
-if which anyenv > /dev/null
-  set -x ANYENV_ROOT $HOME/.anyenv
-  set -x PATH $PATH $ANYENV_ROOT/bin
-  # eval (anyenv init - | source)
-  source (anyenv init - fish | psub)
-end
+# asdf
+source /usr/local/opt/asdf/libexec/asdf.fish
 
-# nodenv
-if which nodenv > /dev/null
-  set -x PATH $PATH (npm bin -g)
-end
+# # anyenv
+# if which anyenv > /dev/null
+#   set -x ANYENV_ROOT $HOME/.anyenv
+#   set -x PATH $PATH $ANYENV_ROOT/bin
+#   # eval (anyenv init - | source)
+#   source (anyenv init - fish | psub)
+# end
+
+# # nodenv
+# if which nodenv > /dev/null
+#   set -x PATH $PATH (npm bin -g)
+# end
 
 #android studio
 set -x ANDROID_HOME $HOME/Library/Android/sdk

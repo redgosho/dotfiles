@@ -15,6 +15,11 @@ if [ "`uname`" = "Darwin" ]; then
   alias ls='ls -G'
   # shell restart
   alias resh='exec $SHELL -l'
+
+  # Homebrew settings
+  export PATH="/usr/local/sbin:$PATH"
+  alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+  
 elif [ "`uname`" = "Linux" ]; then
 echo 'zsh「Hello, I’m Linux.」'
   #--------------------------------------------------
@@ -146,25 +151,39 @@ RPROMPT='`rprompt-git-current-branch`'
 #--------------------------------------------------
 # 環境設定
 #--------------------------------------------------
-# anyenv設定
-if [ -e "$HOME/.anyenv" ]
-then
-    export ANYENV_ROOT="$HOME/.anyenv"
-    export PATH="$ANYENV_ROOT/bin:$PATH"
-    if command -v anyenv 1>/dev/null 2>&1
-    then
-        eval "$(anyenv init - zsh)"
-    fi
-fi
+#asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
 
-# nodenv
-if type nodenv > /dev/null 2>&1
-then
-  export PATH=$PATH:`npm bin -g`
-fi
+# # anyenv設定
+# if [ -e "$HOME/.anyenv" ]
+# then
+#     export ANYENV_ROOT="$HOME/.anyenv"
+#     export PATH="$ANYENV_ROOT/bin:$PATH"
+#     if command -v anyenv 1>/dev/null 2>&1
+#     then
+#         eval "$(anyenv init - zsh)"
+#     fi
+# fi
+
+# # nodenv
+# if type nodenv > /dev/null 2>&1
+# then
+#   export PATH=$PATH:`npm bin -g`
+# fi
+
+# flutter
+export PATH="$PATH:$HOME/development/flutter/bin"
+
+# adb
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 
 # AWS(awscliの設定後)
 if which aws > /dev/null; then
   export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
   export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 fi
+
+# Lima設定
+export DOCKER_HOST=unix:///Users/redgosho/.lima/docker/sock/docker.sock 
+
+alias 2fk='oathtool --totp --base32 "VJYUAWI3X" | tee >( pbcopy )'

@@ -39,21 +39,26 @@ fi
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
-if [ -e "$HOME/.anyenv" ]
-then
-    export ANYENV_ROOT="$HOME/.anyenv"
-    export PATH="$ANYENV_ROOT/bin:$PATH"
-    if command -v anyenv 1>/dev/null 2>&1
-    then
-        eval "$(anyenv init -)"
-    fi
-fi
+## asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
-# nodenv
-if type nodenv > /dev/null 2>&1
-then
-  export PATH=$PATH:`npm bin -g`
-fi
+# ## anyenv
+# if [ -e "$HOME/.anyenv" ]
+# then
+#     export ANYENV_ROOT="$HOME/.anyenv"
+#     export PATH="$ANYENV_ROOT/bin:$PATH"
+#     if command -v anyenv 1>/dev/null 2>&1
+#     then
+#         eval "$(anyenv init -)"
+#     fi
+# fi
+
+# # nodenv
+# if type nodenv > /dev/null 2>&1
+# then
+#   export PATH=$PATH:`npm bin -g`
+# fi
 
 # AWS(awscliの設定後)
 if which aws > /dev/null; then
@@ -65,8 +70,8 @@ fi
 test -r ~/.bashrc && . ~/.bashrc
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/redgosho/google-cloud-sdk/path.bash.inc' ]; then . '/Users/redgosho/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/redgosho/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/redgosho/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc'; fi
 export PATH="/usr/local/sbin:$PATH"
