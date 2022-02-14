@@ -40,9 +40,6 @@ end
 source ~/.config/fish/local.fish
 source ~/.config/fish/functions.fish
 
-# asdf
-source /usr/local/opt/asdf/libexec/asdf.fish
-
 # alias ------------------------------------------
 alias cdd='cd ~/Desktop'
 alias ll='ls -lF'

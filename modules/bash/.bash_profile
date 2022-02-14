@@ -43,22 +43,22 @@ fi
 . /usr/local/opt/asdf/libexec/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
-## anyenv
-if [ -e "$HOME/.anyenv" ]
-then
-    export ANYENV_ROOT="$HOME/.anyenv"
-    export PATH="$ANYENV_ROOT/bin:$PATH"
-    if command -v anyenv 1>/dev/null 2>&1
-    then
-        eval "$(anyenv init -)"
-    fi
-fi
+# ## anyenv
+# if [ -e "$HOME/.anyenv" ]
+# then
+#     export ANYENV_ROOT="$HOME/.anyenv"
+#     export PATH="$ANYENV_ROOT/bin:$PATH"
+#     if command -v anyenv 1>/dev/null 2>&1
+#     then
+#         eval "$(anyenv init -)"
+#     fi
+# fi
 
-# nodenv
-if type nodenv > /dev/null 2>&1
-then
-  export PATH=$PATH:`npm bin -g`
-fi
+# # nodenv
+# if type nodenv > /dev/null 2>&1
+# then
+#   export PATH=$PATH:`npm bin -g`
+# fi
 
 # AWS(awscliの設定後)
 if which aws > /dev/null; then
