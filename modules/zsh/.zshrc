@@ -18,7 +18,12 @@ if [ "`uname`" = "Darwin" ]; then
 
   # Homebrew settings
   export PATH="/usr/local/sbin:$PATH"
-  alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+  export PATH="/opt/homebrew/bin:$PATH"
+  # alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" # anyenv用
+  export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+  # command
+  alias echo-path="echo $PATH | sed -e 's/:/\n/g'"
   
 elif [ "`uname`" = "Linux" ]; then
 echo 'zsh「Hello, I’m Linux.」'
@@ -151,8 +156,11 @@ RPROMPT='`rprompt-git-current-branch`'
 #--------------------------------------------------
 # 環境設定
 #--------------------------------------------------
-#asdf
-. /usr/local/opt/asdf/libexec/asdf.sh
+# asdf
+# . /usr/local/opt/asdf/libexec/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+## asdf java
+. ~/.asdf/plugins/java/set-java-home.bash
 
 # # anyenv設定
 # if [ -e "$HOME/.anyenv" ]
@@ -183,7 +191,11 @@ if which aws > /dev/null; then
   export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 fi
 
+# go
+export PATH="$PATH:$(go env GOPATH)/bin"
+
 # Lima設定
 export DOCKER_HOST=unix:///Users/redgosho/.lima/docker/sock/docker.sock 
 
 alias 2fk='oathtool --totp --base32 "VJYUAWI3X" | tee >( pbcopy )'
+
