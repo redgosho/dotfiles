@@ -192,7 +192,7 @@ if which aws > /dev/null; then
 fi
 
 # go
-if which aws > /dev/null; then
+if which go > /dev/null; then
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
