@@ -194,8 +194,8 @@ fi
 # go
 export PATH="$PATH:$(go env GOPATH)/bin"
 
-# Lima設定
-export DOCKER_HOST=unix:///Users/redgosho/.lima/docker/sock/docker.sock 
+# Lima設定 2022-11-05 uninstall https://github.com/lima-vm/lima/discussions/463
+# export DOCKER_HOST=unix:///Users/redgosho/.lima/docker/sock/docker.sock 
 
 alias 2fk='oathtool --totp --base32 "VJYUAWI3X" | tee >( pbcopy )'
 
