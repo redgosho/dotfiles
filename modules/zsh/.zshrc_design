@@ -20,14 +20,14 @@ function info {
   local user_normal="$(set_color 000 014)${top}%n@%m${reset_color}"
   local user_triangle_normal="$(set_color 014 007)${triangle}${reset_color}"
   local dir_normal="$(set_color 000 007)%~${reset_color}"
-  local dir_triangle_normal="$(set_color 007)${triangle}${reset_color}"
+  local dir_triangle_normal="%F{007}${triangle}%f"
   local normal="${user_normal}${user_triangle_normal}${dir_normal}${dir_triangle_normal}"
 
   # Error
   local user_err="$(set_color 000 001)${top}%n@%M${reset_color}"
   local user_triangle_err="$(set_color 001 007)${triangle}${reset_color}"
   local dir_err="$(set_color 000 007)%~${reset_color}"
-  local dir_triangle_err="$(set_color 007)${triangle}${reset_color}"
+  local dir_triangle_err="%F{007}${triangle}%f"
   local error="${user_err}${user_triangle_err}${dir_err}${dir_triangle_err}"
 
   echo "%(?.${normal}.${error})"
@@ -88,7 +88,7 @@ function git-current-branch {
     branch_status="${color}${blue}${branch} "
   fi
   # ブランチ名を色付きで表示する
-  echo "${branch_status}$branch_name${reset}"
+  echo " ${branch_status}$branch_name${reset}"
 }
 
 # プロンプト文字列を設定
