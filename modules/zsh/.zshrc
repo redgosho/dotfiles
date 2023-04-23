@@ -82,23 +82,6 @@ source ~/.zshrc_design
 ## asdf java
 . ~/.asdf/plugins/java/set-java-home.bash
 
-# # anyenv設定
-# if [ -e "$HOME/.anyenv" ]
-# then
-#     export ANYENV_ROOT="$HOME/.anyenv"
-#     export PATH="$ANYENV_ROOT/bin:$PATH"
-#     if command -v anyenv 1>/dev/null 2>&1
-#     then
-#         eval "$(anyenv init - zsh)"
-#     fi
-# fi
-
-# # nodenv
-# if type nodenv > /dev/null 2>&1
-# then
-#   export PATH=$PATH:`npm bin -g`
-# fi
-
 # flutter
 export PATH="$PATH:$HOME/development/flutter/bin"
 
