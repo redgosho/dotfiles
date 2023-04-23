@@ -24,7 +24,7 @@ if [ "`uname`" = "Darwin" ]; then
 
   # command
   alias echo-path="echo $PATH | sed -e 's/:/\n/g'"
-  
+
 elif [ "`uname`" = "Linux" ]; then
 echo 'zsh「Hello, I’m Linux.」'
   #--------------------------------------------------
@@ -86,14 +86,14 @@ function left-prompt {
   back_color='%{\e[30;48;5;' # set background color
   reset='%{\e[0m%}'   # reset
   sharp='\uE0B0'      # triangle
-  
+
   user="%(?.%{${back_color}${name_b}${text_color}${name_t}%}.%{${back_color}${name_b_err}${text_color}${name_t_err}%})"
   user_arrow="%(?.%{${back_color}${path_b}${text_color}${name_b}${sharp}%}.%{${back_color}${path_b}${text_color}${name_b_err}${sharp}%})"
   dir="${back_color}${path_b}${text_color}${path_t}"
   echo "${user}%n%#@%m${user_arrow} ${dir}%~${reset}${text_color}${path_b}${sharp} ${reset}\n${text_color}${arrow}→ ${reset}"
 }
 # プロンプトの左側にメソッドの結果を表示させる
-PROMPT=`left-prompt` 
+PROMPT=`left-prompt`
 
 # コマンドの実行ごとに改行
 function precmd() {
@@ -116,7 +116,7 @@ function rprompt-git-current-branch {
   yellow='227m%}'
   blue='033m%}'
   reset='%{\e[0m%}'   # reset
-  
+
   if [ ! -e  ".git" ]; then
     # git 管理されていないディレクトリは何も返さない
     return
@@ -146,10 +146,10 @@ function rprompt-git-current-branch {
   # ブランチ名を色付きで表示する
   echo "${branch_status}$branch_name${reset}"
 }
- 
+
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
- 
+
 # プロンプトの右側にメソッドの結果を表示させる
 RPROMPT='`rprompt-git-current-branch`'
 
@@ -193,6 +193,7 @@ fi
 
 # go
 if which go > /dev/null; then
+  export GOPATH=$(go env GOPATH)
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
@@ -204,3 +205,4 @@ fi
 
 alias 2fk='oathtool --totp --base32 "VJYUAWI3X" | tee >( pbcopy )'
 
+export PATH="/opt/homebrew/opt/protobuf@3/bin:$PATH"
