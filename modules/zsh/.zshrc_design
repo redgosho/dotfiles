@@ -1,0 +1,93 @@
+#--------------------------------------------------
+# デザイン設定
+# 色一覧: for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
+#--------------------------------------------------
+
+# ユーザー名、ホスト名、カレントディレクトリを表示させる
+function info {
+  local triangle='\uE0B0'
+  local top=" ∴ "
+
+  set_color() {
+    local text_color=$1
+    local back_color=$2
+    echo "%F{$text_color}%K{$back_color}"
+  }
+
+  reset_color="%f%k"
+
+  # Normal
+  local user_normal="$(set_color 000 014)${top}%n@%m${reset_color}"
+  local user_triangle_normal="$(set_color 014 007)${triangle}${reset_color}"
+  local dir_normal="$(set_color 000 007)%~${reset_color}"
+  local dir_triangle_normal="%F{007}${triangle}%f"
+  local normal="${user_normal}${user_triangle_normal}${dir_normal}${dir_triangle_normal}"
+
+  # Error
+  local user_err="$(set_color 000 001)${top}%n@%M${reset_color}"
+  local user_triangle_err="$(set_color 001 007)${triangle}${reset_color}"
+  local dir_err="$(set_color 000 007)%~${reset_color}"
+  local dir_triangle_err="%F{007}${triangle}%f"
+  local error="${user_err}${user_triangle_err}${dir_err}${dir_triangle_err}"
+
+  echo "%(?.${normal}.${error})"
+}
+
+# input欄のデザイン
+function input {
+  reset='%{\e[0m%}'         # reset
+  echo "\n%F{200}→ %f${reset}"
+}
+
+# コマンドの実行ごとに改行
+function precmd() {
+    # Print a newline before the prompt, unless it's the
+    # first prompt in the process.
+    if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+        NEW_LINE_BEFORE_PROMPT=1
+    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+        echo ""
+    fi
+}
+
+# git ブランチ名を色付きで表示させるメソッド
+function git-current-branch {
+  local branch_name st branch_status
+  local branch='\ue0a0'
+  local reset="%f"
+
+  if [ ! -e  ".git" ]; then
+    # git 管理されていないディレクトリは何も返さない
+    return
+  fi
+  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    # 全て commit されてクリーンな状態
+    branch_status="%F{114}${branch} "
+  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+    # git 管理されていないファイルがある状態
+    branch_status="%F{001}${branch} ?"
+  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+    # git add されていないファイルがある状態
+    branch_status="%F{001}${branch} +"
+  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+    # git commit されていないファイルがある状態
+    branch_status="%F{227}${branch} !"
+  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+    # コンフリクトが起こった状態
+    echo "%F{001}${branch} !(no branch)${reset}"
+    return
+  else
+    # 上記以外の状態の場合
+    branch_status="%F{033}${branch} "
+  fi
+  # ブランチ名を色付きで表示する
+  echo " ${branch_status}$branch_name${reset}"
+}
+
+# プロンプト文字列を設定
+PROMPT="$(info)$(git-current-branch)$(input)"
+
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst

@@ -13,6 +13,6 @@ zsh-shell-clean:
 .PHONY: zsh-shell-install
 zsh-shell-install:
 	ln -sf $(SELF_ZSH_DIR)/.zshrc $(ZSH_DIR)/.zshrc
+	ln -sf $(SELF_ZSH_DIR)/.zshrc_design $(ZSH_DIR)/.zshrc_design
 	rm -rf $(ZSH_PLUGINS_DIR)
 	git clone https://github.com/zsh-users/zsh-autosuggestions $(ZSH_PLUGINS_DIR)/zsh-autosuggestions
-
