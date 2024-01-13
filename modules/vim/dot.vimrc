@@ -41,8 +41,8 @@ set helpheight=999 " ヘルプを画面いっぱいに開く
 set list           " 不可視文字を表示
 " 不可視文字の表示記号指定
 set listchars=tab:▸-,trail:~,eol:↲,extends:»,precedes:«,nbsp:%
-hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None "改行文字色設定
-hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None "タブ文字色設定
+hi NonText ctermfg=87 ctermbg=None cterm=Bold "改行文字色設定
+hi SpecialKey ctermfg=87 ctermbg=None cterm=Bold "タブ文字色設定
 
 " -------------------------------------
 " タブ/インデントの設定
@@ -157,4 +157,3 @@ imap ( ()<LEFT>
 " :set number
 
 " :syntax on
-
