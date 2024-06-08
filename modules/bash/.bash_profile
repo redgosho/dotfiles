@@ -23,10 +23,13 @@ if [ "`uname`" == "Darwin" ]; then
   # GCP-Command
   export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.fish.inc
   export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+  ## asdf
+  . /usr/local/opt/asdf/libexec/asdf.sh
+  . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 elif [ "`uname`" == "Linux" ]; then
   #--------------------------------------------------
   # Linux
-  #--------------------------------------------------  
+  #--------------------------------------------------
   # homebrew
   export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
   PATH="$HOME/.linuxbrew/bin:$PATH"
@@ -34,32 +37,14 @@ elif [ "`uname`" == "Linux" ]; then
   export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   umask 002
+  # asdf
+  . "$HOME/.asdf/asdf.sh"
+  . "$HOME/.asdf/completions/asdf.bash"
 fi
 
 #--------------------------------------------------
 # 共通設定
 #--------------------------------------------------
-## asdf
-. /usr/local/opt/asdf/libexec/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-
-# ## anyenv
-# if [ -e "$HOME/.anyenv" ]
-# then
-#     export ANYENV_ROOT="$HOME/.anyenv"
-#     export PATH="$ANYENV_ROOT/bin:$PATH"
-#     if command -v anyenv 1>/dev/null 2>&1
-#     then
-#         eval "$(anyenv init -)"
-#     fi
-# fi
-
-# # nodenv
-# if type nodenv > /dev/null 2>&1
-# then
-#   export PATH=$PATH:`npm bin -g`
-# fi
-
 # AWS(awscliの設定後)
 if which aws > /dev/null; then
   export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
@@ -73,5 +58,6 @@ test -r ~/.bashrc && . ~/.bashrc
 if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
+
 export PATH="/usr/local/sbin:$PATH"
